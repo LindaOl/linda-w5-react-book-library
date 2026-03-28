@@ -1,7 +1,7 @@
-import { Description } from "./Description";
-import { Title } from "./Title";
-import { Genre } from "./Genre";
-import { Image } from "./Image";
+import { Description } from "./Description.jsx";
+import { Title } from "./Title.jsx";
+import { Genre } from "./Genre.jsx";
+import { Image } from "./Image.jsx";
 
 export const Selected = ({ info, onBack, onGenreClick }) => {
     if (!info) return <div>Select a book.</div>;
