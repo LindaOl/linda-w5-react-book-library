@@ -1,7 +1,7 @@
 import "./App.css";
 import data from "./data.json";
 import { useState } from "react";
-import { Header } from "./components/Header.jsx";
+import { Header } from "./components/header.jsx";
 import { Books } from "./components/Book.jsx";
 import { Searchbar } from "./components/Searchbar.jsx";
 import { Footer } from "./components/Footer.jsx";
@@ -13,13 +13,13 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Only genre filter
+  // genre filter
   const filteredBooks = books.filter(book => {
     if (!selectedGenre) return true;
     return book.genre?.trim().toLowerCase() === selectedGenre.toLowerCase();
   });
 
-  // Only search filter (always from full list)
+  // search filter (always from full list)
   const searchResults = books.filter(book =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     book.genre.toLowerCase().includes(searchTerm.toLowerCase())
