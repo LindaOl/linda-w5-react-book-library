@@ -24,8 +24,7 @@ export const Selected = ({ info, onBack, onGenreClick }) => {
                 <Genre
                     data={info}
                     onGenreClick={(genre) => {
-                        onGenreClick(genre); // set selectedGenre
-                        onBack();            // go back to book list
+                        onGenreClick(genre);
                     }}
                 />
             </div>

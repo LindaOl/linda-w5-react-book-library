@@ -1,8 +1,8 @@
-import { Description } from "./Description";
-import { Title } from "./Title";
-import { Genre } from "./Genre";
-import { Image } from "./Image";
-import { Pricetag } from "./Pricetag";
+import { Description } from "./Description.jsx";
+import { Title } from "./Title.jsx";
+import { Genre } from "./Genre.jsx";
+import { Image } from "./Image.jsx";
+import { Pricetag } from "./Pricetag.jsx";
 
 
 export const Books = ({ data, onSelect, onGenreClick }) => {

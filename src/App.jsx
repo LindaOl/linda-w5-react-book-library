@@ -37,7 +37,9 @@ function App() {
   };
 
   const handleGenreClick = (genre) => {
-    setSelectedGenre(prev => prev === genre ? null : genre);
+    const normalized = genre.toLowerCase();
+    setSelectedGenre(normalized);
+    setSelectedBook(null); // go back to list
   };
 
   const handleReset = () => {
@@ -55,7 +57,7 @@ function App() {
           {/* ROW WITH SEARCHBAR, and Filteractivation */}
           <Searchbar
             selectedGenre={selectedGenre}
-            onGenreChange={setSelectedGenre}
+            onGenreChange={handleGenreClick}
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
           />
@@ -83,7 +85,7 @@ function App() {
               <Books
                 data={{ books: filteredBooks }}
                 onSelect={setSelectedBook}
-                onGenreClick={setSelectedGenre}
+                onGenreClick={handleGenreClick}  // not setSelectedGenre
               />
             </>
           )}

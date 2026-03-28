@@ -18,8 +18,8 @@ export const Genre = ({ data, onGenreClick }) => {
             className="GenreSwitch"
             style={{ backgroundColor: getGenreColor(data.genre) }}
             onClick={(e) => {
-                e.stopPropagation(); // prevents card click
-                onGenreClick(data.genre); // filter trigger
+                e.stopPropagation();
+                onGenreClick(data.genre);
             }}
         >
             {data.genre}
