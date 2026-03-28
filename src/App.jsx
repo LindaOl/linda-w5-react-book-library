@@ -21,7 +21,8 @@ function App() {
 
   // Only search filter (always from full list)
   const searchResults = books.filter(book =>
-    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+    book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    book.genre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Decide which to show: search overrides genre
@@ -78,9 +79,13 @@ function App() {
                 </button>
               </div>
             )}
+
             <Books
               data={{ books: booksToShow }}
-              onSelect={setSelectedBook}
+              onSelect={(book) => {
+                setSelectedBook(book); // select the book
+                setSearchTerm("");      // reset search input
+              }}
               onGenreClick={handleGenreClick}
             />
           </>
