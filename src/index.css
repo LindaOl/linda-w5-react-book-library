@@ -126,41 +126,110 @@ nav {
   width: 48%;
 }
 
+.filters,
 .search {
-  position: relative;
-  margin: 0 auto;
-  justify-content: end;
+  display: flex;
+  flex-direction: row;
+  width: 48%;
+  height: 48px;
+  /* fix the height */
 }
 
 .search input,
-select {
-  width: 100%;
-  padding: 10px 10px 10px 35px;
+.custom-select {
+  height: 100%;
+  /* fill the parent div */
+  padding: 0 10px;
+  /* horizontal padding only */
   font-size: 16px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  outline: none;
   box-shadow: var(--shadow-color-nav);
-  transition: all 0.2s ease;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  margin: 0 auto;
+  justify-content: flex-end;
+  height: 48px;
+  /* same as input & filters */
+}
+
+.search input {
+  height: 100%;
+  /* fill parent height */
+  padding-left: 40px;
+  /* space for the icon */
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 .search .search-icon {
   position: absolute;
-  left: 10px;
+  left: 12px;
+  /* horizontal spacing from edge */
   top: 50%;
+  /* center vertically */
   transform: translateY(-50%);
+  /* perfect vertical centering */
   color: #999;
   pointer-events: none;
+  font-size: 1em;
+  /* optional, adjust size if needed */
 }
 
-
+/*DROPDOWN FILTER*/
 .filters {
   justify-content: start;
 }
 
-option :hover {
+/* Custom dropdown styling */
+.custom-select {
+  position: relative;
+  width: 100%;
+  /* adjust to your layout */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: var(--shadow-color-nav);
+  user-select: none;
+  text-align: start;
+}
+
+.custom-select .options {
+  display: none;
+  /* hidden by default */
+  position: absolute;
+  top: 100%;
+  /* appears below the select box */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.custom-select .options.open {
+  display: block;
+  /* show when open */
+}
+
+.custom-select .option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.custom-select .option:hover {
   background-color: var(--color-hover);
 }
+
+/*MAIN BOOK LIST*/
 
 .cards {
   display: grid;

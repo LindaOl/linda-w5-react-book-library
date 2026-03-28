@@ -1,11 +1,26 @@
 import { FaSearch } from "react-icons/fa";
+import { useState } from "react";
+
+const genres = [
+    { value: "all", label: "All Genres" },
+    { value: "fiction", label: "Fiction" },
+    { value: "science fiction", label: "Science Fiction" },
+    { value: "fantasy", label: "Fantasy" },
+    { value: "adventure", label: "Adventure" },
+    { value: "horror", label: "Horror" },
+    { value: "mystery", label: "Mystery" },
+    { value: "dystopian", label: "Dystopian" },
+];
 
 export const Searchbar = ({
     selectedGenre,
     onGenreChange,
     searchTerm,
-    onSearchChange
+    onSearchChange,
 }) => {
+    // ✅ You need this state for dropdown open/close
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <nav>
             <div className="search">
@@ -19,22 +34,26 @@ export const Searchbar = ({
             </div>
 
             <div className="filters">
-                <select
-                    value={selectedGenre || "all"}
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        onGenreChange(value === "all" ? null : value);
-                    }}
-                >
-                    <option value="all">All Genres</option>
-                    <option value="fiction">Fiction</option>
-                    <option value="science fiction">Science Fiction</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="horror">Horror</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="dystopian">Dystopian</option>
-                </select>
+                <div className="custom-select" onClick={() => setIsOpen((prev) => !prev)}>
+                    {selectedGenre
+                        ? genres.find((g) => g.value === selectedGenre)?.label
+                        : "All Genres"}
+                    <div className={`options ${isOpen ? "open" : ""}`}>
+                        {genres.map((genre) => (
+                            <div
+                                key={genre.value}
+                                className="option"
+                                onClick={(e) => {
+                                    e.stopPropagation(); // prevents the dropdown from immediately closing
+                                    onGenreChange(genre.value === "all" ? null : genre.value);
+                                    setIsOpen(false);
+                                }}
+                            >
+                                {genre.label}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </nav>
     );

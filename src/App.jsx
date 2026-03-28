@@ -23,13 +23,11 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredBooks = books.filter(book => {
-    const matchesGenre = selectedGenre
-      ? book.genre.toLowerCase() === selectedGenre.toLowerCase()
-      : true;
+    const bookGenre = book.genre?.trim().toLowerCase();
+    const selected = selectedGenre?.trim().toLowerCase();
 
-    const matchesSearch = book.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
+    const matchesGenre = selected ? bookGenre === selected : true;
+    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
 
     return matchesGenre && matchesSearch;
   });
