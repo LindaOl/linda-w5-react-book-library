@@ -1,7 +1,7 @@
 import "./App.css";
 import data from "./data.json";
 import { useState } from "react";
-import { Header } from "./components/header.jsx";
+import { Header } from "./components/Header.jsx";
 import { Books } from "./components/Book.jsx";
 import { Searchbar } from "./components/Searchbar.jsx";
 import { Footer } from "./components/Footer.jsx";
