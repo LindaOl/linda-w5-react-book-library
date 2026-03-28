@@ -12,14 +12,13 @@ const genres = [
     { value: "dystopian", label: "Dystopian" },
 ];
 
-export const Searchbar = ({
-    selectedGenre,
-    onGenreChange,
-    searchTerm,
-    onSearchChange,
-}) => {
-    // ✅ You need this state for dropdown open/close
+export const Searchbar = ({ selectedGenre, onGenreChange, searchTerm, onSearchChange }) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleSelect = (genre) => {
+        onGenreChange(genre === "all" ? null : genre); // reset null for 'All Genres'
+        setIsOpen(false);
+    };
 
     return (
         <nav>
@@ -34,7 +33,7 @@ export const Searchbar = ({
             </div>
 
             <div className="filters">
-                <div className="custom-select" onClick={() => setIsOpen((prev) => !prev)}>
+                <div className="custom-select" onClick={() => setIsOpen(prev => !prev)}>
                     {selectedGenre
                         ? genres.find((g) => g.value === selectedGenre)?.label
                         : "All Genres"}
@@ -44,9 +43,8 @@ export const Searchbar = ({
                                 key={genre.value}
                                 className="option"
                                 onClick={(e) => {
-                                    e.stopPropagation(); // prevents the dropdown from immediately closing
-                                    onGenreChange(genre.value === "all" ? null : genre.value);
-                                    setIsOpen(false);
+                                    e.stopPropagation();
+                                    handleSelect(genre.value);
                                 }}
                             >
                                 {genre.label}

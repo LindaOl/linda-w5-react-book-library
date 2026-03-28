@@ -8,38 +8,31 @@ import { Footer } from "./components/Footer";
 import { Selected } from "./components/Selected";
 
 function App() {
-
-  /*States made by selecting book, filtering by genre or searching*/
-  // State if one book is clicked
   const [selectedBook, setSelectedBook] = useState(null);
-
-  // All books from JSON
   const { books } = data;
-
-  // State for genre filtering
   const [selectedGenre, setSelectedGenre] = useState(null);
-
-  // State for search bar
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Only genre filter
   const filteredBooks = books.filter(book => {
-    const bookGenre = book.genre?.trim().toLowerCase();
-    const selected = selectedGenre?.trim().toLowerCase();
-
-    const matchesGenre = selected ? bookGenre === selected : true;
-    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
-
-    return matchesGenre && matchesSearch;
+    if (!selectedGenre) return true;
+    return book.genre?.trim().toLowerCase() === selectedGenre.toLowerCase();
   });
 
-  const handleClearFilter = () => {
-    setSelectedGenre(null);
-  };
+  // Only search filter (always from full list)
+  const searchResults = books.filter(book =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  const handleGenreClick = (genre) => {
-    const normalized = genre.toLowerCase();
-    setSelectedGenre(normalized);
-    setSelectedBook(null); // go back to list
+  // Decide which to show: search overrides genre
+  const booksToShow = searchTerm ? searchResults : filteredBooks;
+
+  const handleClearFilter = () => setSelectedGenre(null);
+
+  const handleGenreClick = genre => {
+    setSelectedGenre(genre.toLowerCase());
+    setSelectedBook(null); // back to list
+    setSearchTerm(""); // reset search so genre filter works
   };
 
   const handleReset = () => {
@@ -49,51 +42,53 @@ function App() {
   };
 
   return (
-    <>
-      <div className="main-content">
-        <div className="filterable-book-table">
-          <Header onHomeClick={handleReset} />
+    <div className="main-content">
+      <div className="filterable-book-table">
+        <Header onHomeClick={handleReset} />
 
-          {/* ROW WITH SEARCHBAR, and Filteractivation */}
-          <Searchbar
-            selectedGenre={selectedGenre}
-            onGenreChange={handleGenreClick}
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
+        {/* Searchbar always visible */}
+        <Searchbar
+          selectedGenre={selectedGenre}
+          onGenreChange={genre => {
+            setSelectedGenre(genre);
+            setSelectedBook(null); // clear selected book when changing genre
+            setSearchTerm("");      // reset search
+          }}
+          searchTerm={searchTerm}
+          onSearchChange={value => {
+            setSearchTerm(value);   // update search term
+            setSelectedBook(null);  // clear selected book so list re-renders
+          }}
+        />
+
+
+        {/* Show Selected or book list */}
+        {selectedBook ? (
+          <Selected
+            info={selectedBook}
+            onBack={() => setSelectedBook(null)}
+            onGenreClick={handleGenreClick}
           />
-
-          {/* BOOK LIBRARY, SELECTED BOOK or filtered by genre */}
-          {selectedBook ? (
-            <Selected
-              info={selectedBook}
-              onBack={() => setSelectedBook(null)}
-              onGenreClick={handleGenreClick} // pass handler if genre button is clicked
+        ) : (
+          <>
+            {selectedGenre && (
+              <div className="buttonDiv">
+                <button className="allButton" onClick={handleClearFilter}>
+                  All
+                </button>
+              </div>
+            )}
+            <Books
+              data={{ books: booksToShow }}
+              onSelect={setSelectedBook}
+              onGenreClick={handleGenreClick}
             />
-          ) : (
-            <>
-              {selectedGenre && (
-                <div className="buttonDiv">
-                  <button
-                    className="allButton"
-                    onClick={handleClearFilter}
-                  >
-                    All
-                  </button>
-                </div>
-              )}
-
-              <Books
-                data={{ books: filteredBooks }}
-                onSelect={setSelectedBook}
-                onGenreClick={handleGenreClick}  // not setSelectedGenre
-              />
-            </>
-          )}
-        </div>
-
-        <Footer />
+          </>
+        )}
       </div>
-    </>
+
+      <Footer />
+    </div>
   );
 }
 
