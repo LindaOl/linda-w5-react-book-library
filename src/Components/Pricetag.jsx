@@ -1,5 +1,5 @@
 export const Pricetag = ({ link }) => {
-    if (!link) return null;  // 👈 prevent crash
+    if (!link) return null;  // prevent crash
 
     return (
         <a
