@@ -11,7 +11,7 @@ export const Books = ({ data, onSelect, onGenreClick }) => {
             {data.books.map(info => (
                 <div
                     key={info.title}
-                    className="Card"
+                    className="card"
                     onClick={() => onSelect(info)}
                 >
                     <div className="image-wrapper">

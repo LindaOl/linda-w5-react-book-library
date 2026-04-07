@@ -1,0 +1,325 @@
+/* HEADER, in Header.jsx */
+.header {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 60px 10px;
+    border-bottom: var(--line-color);
+}
+
+
+/*in Title.jsx*/
+.title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+
+
+.title {
+    width: 80%;
+    border-bottom: var(--line-color);
+}
+
+
+/*in Description.jsx*/
+.description {
+    font-family: "Nunito Sans", sans-serif;
+    overflow: hidden;
+    flex: 1;
+    padding-top: 5px;
+}
+
+/**/
+
+
+.Genre {
+    padding: 5px;
+    margin-top: auto;
+}
+
+
+/* NAVIGATION / SEARCHBAR, in Searchbar.jsx*/
+nav {
+    width: 80%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 2000;
+}
+
+
+.filters,
+.search {
+    display: flex;
+    flex-direction: row;
+    width: 48%;
+    height: 48px;
+    position: relative;
+}
+
+
+.search input {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-shadow: var(--shadow-color-nav);
+}
+
+
+.search .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    font-size: 1em;
+}
+
+
+/* DROPDOWN FILTER */
+.custom-select {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-color-nav);
+    user-select: none;
+    text-align: start;
+    z-index: 3000;
+    /* higher than Selected */
+}
+
+
+.custom-select .options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 3001;
+}
+
+
+.custom-select .options.open {
+    display: block;
+}
+
+
+.custom-select .option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.custom-select .option:hover {
+    background-color: var(--color-hover);
+}
+
+
+/* MAIN BOOK LIST, in Book.jsx*/
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    aspect-ratio: 3 / 5;
+    background-color: white;
+    box-shadow: var(--card-shadow);
+}
+
+
+.card:hover {
+    background-color: var(--color-hover);
+}
+
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 45%;
+}
+
+
+/*in Image.jsx*/
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* PRICE TAG, in Pricetag.jsx */
+.price-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+
+.price-wrapper:hover .tooltip {
+    opacity: 1;
+}
+
+
+.price-icon {
+    width: 50px;
+    height: 50px;
+}
+
+
+.price-icon:hover {
+    width: 70px;
+    height: 70px;
+    transition: 1s;
+}
+
+
+.tool-tip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+
+
+/* SELECTED BOOK Selected.jsx*/
+.selected-wrapper {
+    position: relative;
+    z-index: 1000;
+    /* lower than dropdown */
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    padding: 16px;
+    gap: 15px;
+}
+
+
+.selection img {
+    max-height: 400px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+
+button:hover {
+    border-color: var(--title-color);
+}
+
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+/*In Genre.jsx*/
+.genre-switch {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+    margin: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.genre-switch:hover {
+    border: 1px solid black;
+    transition: 0.3s;
+}
+
+
+/*Footer*/
+footer {
+    width: 100vw;
+    margin-top: 20px;
+}
+
+
+.nav-back {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    background-color: var(--title-color);
+    text-align: center;
+}
+
+
+.nav-back:hover {
+    background-color: #5384b4;
+    color: white;
+}
+
+
+.info-footer {
+    height: 10vw;
+    background-color: var(--h2-color);
+    color: white;
+    padding: 80px;
+}
+
+
+.back-to-top {
+    color: white;
+    text-decoration: none;
+}

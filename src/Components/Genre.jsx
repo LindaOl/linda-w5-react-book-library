@@ -15,7 +15,7 @@ export const Genre = ({ data, onGenreClick }) => {
 
     return (
         <div
-            className="GenreSwitch"
+            className="genre-switch"
             style={{ backgroundColor: getGenreColor(data.genre) }}
             onClick={(e) => {
                 e.stopPropagation();

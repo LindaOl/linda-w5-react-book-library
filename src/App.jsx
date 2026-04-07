@@ -1,11 +1,12 @@
 import "./App.css";
+import "./components.css";
 import data from "./data.json";
 import { useState } from "react";
-import { Header } from "./Components/Header";
-import { Books } from "./Components/Book";
-import { Searchbar } from "./Components/Searchbar";
-import { Footer } from "./Components/Footer";
-import { Selected } from "./Components/Selected";
+import { Header } from "./components/Header";
+import { Books } from "./components/Book";
+import { Searchbar } from "./components/Searchbar";
+import { Footer } from "./components/Footer";
+import { Selected } from "./components/Selected";
 
 function App() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -73,8 +74,8 @@ function App() {
         ) : (
           <>
             {selectedGenre && (
-              <div className="buttonDiv">
-                <button className="allButton" onClick={handleClearFilter}>
+              <div className="button-div">
+                <button className="all-button" onClick={handleClearFilter}>
                   All
                 </button>
               </div>

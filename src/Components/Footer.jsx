@@ -1,7 +1,7 @@
 export const Footer = () => {
     return (
         <footer>
-            <button className="navBack">
+            <button className="nav-back">
                 <p><a href="#top" className="back-to-top">Back to the top</a></p>
             </button>
             <div className="info-footer">

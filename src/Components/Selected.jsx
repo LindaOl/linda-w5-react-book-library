@@ -7,11 +7,11 @@ export const Selected = ({ info, onBack, onGenreClick }) => {
     if (!info) return <div>Select a book.</div>;
 
     return (
-        <div className="SelectedWrapper">
-            <div className="Selection">
+        <div className="selected-wrapper">
+            <div className="selection">
                 {/* Back button */}
-                <div className="buttonDiv">
-                    <button className="backButton" onClick={onBack}>
+                <div className="button-div">
+                    <button className="back-button" onClick={onBack}>
                         ← Back
                     </button>
                 </div>

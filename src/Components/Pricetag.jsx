@@ -14,7 +14,7 @@ export const Pricetag = ({ link }) => {
                 src="/images/pricetag.png"
                 alt="price tag"
             />
-            <span className="tooltip">Go to Amazon</span>
+            <span className="tool-tip">Go to Amazon</span>
         </a>
     );
 };

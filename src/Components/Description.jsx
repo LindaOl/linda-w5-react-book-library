@@ -1,6 +1,6 @@
 export const Description = ({ data }) => {
     return (
-        <div className="Description">
+        <div className="description">
             {data.description}
         </div>
     )
