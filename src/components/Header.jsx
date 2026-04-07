@@ -5,7 +5,7 @@ export const Header = ({ onHomeClick }) => {
                 style={{ cursor: "pointer" }}
                 onClick={onHomeClick} // reset app state
             >
-                Book Gallery
+                Book Library
             </h1>
         </header>
     );
