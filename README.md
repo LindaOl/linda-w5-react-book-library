@@ -1,14 +1,7 @@
-# Weather app
-
-Replace this readme with your own information about the project. You can include things like:
-
-- Brief description of the assignment
-- How you approached the task, what tools and techniques you used, and how you planned it
-- If you had more time, what would be next?
+# Book Library
 
 # Assignment
 - Make a book library in React
-- 
 
 # Approach
 - Made a drawing of the layout
@@ -28,6 +21,7 @@ Replace this readme with your own information about the project. You can include
 
 # Possible changes
 - I would not have chosen the same structure and what information to show where in the hierarchy in the same way as the assignment instructed. I would have title, description with hidden overflow and a genre button. Then show other details when a book is selected. Did that in the start, but changed it as the assignment asked for specific Parent and Child components.
+- Changed font styling for selected books to make it fit better.
 
 
 
