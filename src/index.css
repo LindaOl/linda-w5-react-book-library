@@ -18,7 +18,8 @@
   --card-shadow: 5px 5px 4px rgba(199, 199, 199, 0.87);
   --h2-color: #1d315c;
   --line-color: solid 1px #e1e4e9;
-
+  --button-background: #f1f1f1;
+  --button-hover: #f1f1f1b4;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

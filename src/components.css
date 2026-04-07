@@ -22,11 +22,19 @@ nav {
 }
 
 
-.filters,
 .search {
     display: flex;
     flex-direction: row;
     width: 48%;
+    height: 48px;
+    position: relative;
+}
+
+.sorting,
+.filters {
+    width: 24%;
+    display: flex;
+    flex-direction: row;
     height: 48px;
     position: relative;
 }
@@ -98,6 +106,13 @@ nav {
 
 .custom-select .option:hover {
     background-color: var(--color-hover);
+}
+
+.random-button {
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: var(--button-background);
+    border: solid 1px #ccc;
 }
 
 
@@ -258,7 +273,6 @@ nav {
 }
 
 
-
 /* SELECTED BOOK Selected.jsx*/
 .selected-wrapper {
     position: relative;
@@ -295,14 +309,15 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: var(--button-background);
     cursor: pointer;
-    transition: border-color 0.25s;
+    transition: 1s;
 }
 
 
 button:hover {
     border-color: var(--title-color);
+    background-color: var(--button-hover);
 }
 
 

@@ -7,12 +7,18 @@ import { Book } from "./components/Book.jsx";
 import { Searchbar } from "./components/Searchbar.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Selected } from "./components/Selected.jsx";
+import { RandomBook } from "./components/RandomBook.jsx";
+
+
+
 
 function App() {
   const [selectedBook, setSelectedBook] = useState(null);
-  const { books } = data;
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState(null);
+
+  const { books } = data;
 
   // genre filter
   const filteredBooks = books.filter(book => {
@@ -26,8 +32,32 @@ function App() {
     book.genre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Decide which to show: search overrides genre
-  const booksToShow = searchTerm ? searchResults : filteredBooks;
+  // Decide which to show: search overrides genre, sorting order if chosen
+  const booksToShowBase = searchTerm ? searchResults : filteredBooks;
+
+  const booksToShow = [...booksToShowBase].sort((a, b) => {
+    if (sortOrder === "newest") return b.year - a.year;
+    if (sortOrder === "oldest") return a.year - b.year;
+
+    if (sortOrder === "alphabetical") return a.author.localeCompare(b.author);
+    if (sortOrder === "reverse") return b.author.localeCompare(a.author);
+
+
+    if (sortOrder === "rating-high") return b.rating - a.rating;
+    if (sortOrder === "rating-low") return a.rating - b.rating;
+
+    return 0;
+  });
+
+  const handleRandomBook = () => {
+    if (booksToShow.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * booksToShow.length);
+    const randomBook = booksToShow[randomIndex];
+
+    setSelectedBook(randomBook);
+    setSearchTerm("");
+  };
 
   const handleClearFilter = () => setSelectedGenre(null);
 
@@ -53,14 +83,24 @@ function App() {
           selectedGenre={selectedGenre}
           onGenreChange={genre => {
             setSelectedGenre(genre);
-            setSelectedBook(null); // clear selected book when changing genre
-            setSearchTerm("");      // reset search
+            setSelectedBook(null);
+            setSearchTerm("");
           }}
           searchTerm={searchTerm}
           onSearchChange={value => {
-            setSearchTerm(value);   // update search term
-            setSelectedBook(null);  // clear selected book so list re-renders
+            setSearchTerm(value);
+            setSelectedBook(null);
           }}
+          sortOrder={sortOrder}
+          onSortChange={value => {
+            setSortOrder(value);
+            setSelectedBook(null);
+          }}
+        />
+
+        <RandomBook
+          onRandomPick={handleRandomBook}
+          disabled={booksToShow.length === 0}
         />
 
 

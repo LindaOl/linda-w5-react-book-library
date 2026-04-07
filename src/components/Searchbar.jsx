@@ -12,12 +12,34 @@ const genres = [
     { value: "dystopian", label: "Dystopian" },
 ];
 
-export const Searchbar = ({ selectedGenre, onGenreChange, searchTerm, onSearchChange }) => {
+const sortOptions = [
+    { value: "newest", label: "Newest first" },
+    { value: "oldest", label: "Oldest first" },
+    { value: "alphabetical", label: "Author: A–Z" },
+    { value: "reverse", label: "Author: Z–A" },
+    { value: "rating-high", label: "Rating: high to low" },
+    { value: "rating-low", label: "Rating: low to high" }
+];
+
+export const Searchbar = ({
+    selectedGenre,
+    onGenreChange,
+    searchTerm,
+    onSearchChange,
+    sortOrder,
+    onSortChange
+}) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isSortOpen, setIsSortOpen] = useState(false);
 
     const handleSelect = (genre) => {
-        onGenreChange(genre === "all" ? null : genre); // reset null for 'All Genres'
+        onGenreChange(genre === "all" ? null : genre);
         setIsOpen(false);
+    };
+
+    const handleSortSelect = (sortValue) => {
+        onSortChange(sortValue);
+        setIsSortOpen(false);
     };
 
     return (
@@ -48,6 +70,29 @@ export const Searchbar = ({ selectedGenre, onGenreChange, searchTerm, onSearchCh
                                 }}
                             >
                                 {genre.label}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="sorting">
+                <div className="custom-select" onClick={() => setIsSortOpen(prev => !prev)}>
+                    {sortOrder
+                        ? sortOptions.find((option) => option.value === sortOrder)?.label
+                        : "Sorting"}
+
+                    <div className={`options ${isSortOpen ? "open" : ""}`}>
+                        {sortOptions.map((option) => (
+                            <div
+                                key={option.value}
+                                className="option"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSortSelect(option.value);
+                                }}
+                            >
+                                {option.label}
                             </div>
                         ))}
                     </div>
