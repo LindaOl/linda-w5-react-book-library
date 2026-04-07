@@ -1,41 +1,35 @@
-# Instructions
+# Weather app
 
-## Books library
+Replace this readme with your own information about the project. You can include things like:
 
-Let's create the book library in React!
+- Brief description of the assignment
+- How you approached the task, what tools and techniques you used, and how you planned it
+- If you had more time, what would be next?
 
-## 📚 How to use the books data & construct your components 🤓
+# Assignment
+- Make a book library in React
+- 
 
-In the `/src/data.json`, we've included a data object contains some books data. You can `import` this JSON file into a component using `import data from './data.json'` (which we've already done for you in the App component).
+# Approach
+- Made a drawing of the layout
+- Used the image to mark up components and make hierarchy
+- Wrote down my thought on CSS, design choices and how i wanted the differents parts to work
+- Coded a simple, static version in React
+- Started styling
+- Added interactivity
+- Devided styling into more files, index.css, app.css and component.css
+- Checked the assignments terms again, and made adjustments.
 
-The result of importing the JSON is a variable called `data` which includes the full JSON object. Your task is to use this, along with `.map()` to mount an 'Book' component for each book. Your app could have a structure like this:
 
-- `App` component which has the `data`
-  - `Book` component which is rendered using `.map()` and which you pass the book data into using props.
-    - `Title` component
-    - `Author` component
-    - `BookInfo` component
-    - `Image` component
+# Tools
+- Used Visual Studios for the main code
+- Used websites to read up to find solutions.
+- used AI when the code didn't work, to explain and find the mistakes.
 
-This is just a suggestion - how you decide to structure your components is completely up to you.
+# Possible changes
+- I would not have chosen the same structure and what information to show where in the hierarchy in the same way as the assignment instructed. I would have title, description with hidden overflow and a genre button. Then show other details when a book is selected. Did that in the start, but changed it as the assignment asked for specific Parent and Child components.
 
-## Folder Structure
 
-- App.jsx - (Parent Component) - 🍿 Provided in Boiler Plate 🍿
-- Header.jsx - (Child Component of App.jsx) - 🤓 Not Provided, to be created 🤓
-- Book.jsx - (Child Component of App.jsx) - 🤓 Not Provided, to be created 🤓
-  - Title.jsx - (Child Component of Book.jsx) - 🤓 Not Provided, to be created 🤓
-  - Author.jsx - (Child Component of Book.jsx) - 🤓 Not Provided, to be created 🤓
-  - BookInfo.jsx - (Child Component of Book.jsx) - 🤓 Not Provided, to be created 🤓
-    - In the `BookInfo` component you should display the following props:
-    - `year` prop
-    - `genre` prop
-    - `rating` prop
-    - `description` prop
-  - CoverImage.jsx - (Child Component of Book.jsx) - 🤓 Not Provided, to be created 🤓
 
-## Want a challenge?
-
-Find a link for every book on Amazon, create a new pair of key/value to store the url value in the `data.json` file, finally pass the link into the Book component as a prop to be redirected to Amazon and see the book.
-
-###
+## View it live
+[Website](https://https://booklibrarylinda.netlify.app//)

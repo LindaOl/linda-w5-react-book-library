@@ -1,8 +1,9 @@
 import { Description } from "./Description.jsx";
 import { Title } from "./Title.jsx";
 import { Genre } from "./Genre.jsx";
-import { Image } from "./Image.jsx";
+import { CoverImage } from "./CoverImage.jsx";
 import { Pricetag } from "./Pricetag.jsx";
+import { Author } from "./Author.jsx";
 
 export const Selected = ({ info, onBack, onGenreClick }) => {
     if (!info) return <div>Select a book.</div>;
@@ -18,11 +19,18 @@ export const Selected = ({ info, onBack, onGenreClick }) => {
                 </div>
 
                 <div className="image-wrapper">
-                    <Image data={info} />
+                    <CoverImage data={info} />
                     <Pricetag link={info.link} />
                 </div>
                 <Title data={info} />
+                <Author data={info} />
                 <Description data={info} />
+                <div>
+                    <h2>Other information:</h2>
+                    <p>Year: {info.year}</p>
+                    <p>Rating: {info.rating}</p>
+                </div>
+
 
                 {/* Clicking genre filters and returns to book list */}
                 <Genre
