@@ -2,11 +2,11 @@ import "./App.css";
 import "./components.css";
 import data from "./data.json";
 import { useState } from "react";
-import { Header } from "./components/Header";
-import { Books } from "./components/Book";
-import { Searchbar } from "./components/Searchbar";
-import { Footer } from "./components/Footer";
-import { Selected } from "./components/Selected";
+import { Header } from "./components/Header.jsx";
+import { Books } from "./components/Book.jsx";
+import { Searchbar } from "./components/Searchbar.jsx";
+import { Footer } from "./components/Footer.jsx";
+import { Selected } from "./components/Selected.jsx";
 
 function App() {
   const [selectedBook, setSelectedBook] = useState(null);
