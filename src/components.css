@@ -33,14 +33,6 @@
     padding-top: 5px;
 }
 
-/**/
-
-
-.Genre {
-    padding: 5px;
-    margin-top: auto;
-}
-
 
 /* NAVIGATION / SEARCHBAR, in Searchbar.jsx*/
 nav {
@@ -181,7 +173,7 @@ nav {
 }
 
 
-.price-wrapper:hover .tooltip {
+.price-wrapper:hover .tool-tip {
     opacity: 1;
 }
 

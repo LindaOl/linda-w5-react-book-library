@@ -2,6 +2,7 @@ import { Description } from "./Description.jsx";
 import { Title } from "./Title.jsx";
 import { Genre } from "./Genre.jsx";
 import { Image } from "./Image.jsx";
+import { Pricetag } from "./Pricetag.jsx";
 
 export const Selected = ({ info, onBack, onGenreClick }) => {
     if (!info) return <div>Select a book.</div>;
@@ -16,7 +17,10 @@ export const Selected = ({ info, onBack, onGenreClick }) => {
                     </button>
                 </div>
 
-                <Image data={info} />
+                <div className="image-wrapper">
+                    <Image data={info} />
+                    <Pricetag link={info.link} />
+                </div>
                 <Title data={info} />
                 <Description data={info} />
 
