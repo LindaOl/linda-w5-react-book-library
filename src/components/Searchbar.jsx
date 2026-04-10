@@ -54,49 +54,53 @@ export const Searchbar = ({
                 />
             </div>
 
-            <div className="filters">
-                <div className="custom-select" onClick={() => setIsOpen(prev => !prev)}>
-                    {selectedGenre
-                        ? genres.find((g) => g.value === selectedGenre)?.label
-                        : "All Genres"}
-                    <div className={`options ${isOpen ? "open" : ""}`}>
-                        {genres.map((genre) => (
-                            <div
-                                key={genre.value}
-                                className="option"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleSelect(genre.value);
-                                }}
-                            >
-                                {genre.label}
-                            </div>
-                        ))}
+            <div className="sort-and-filter">
+                <div className="filters">
+                    <div className="custom-select" onClick={() => setIsOpen(prev => !prev)}>
+                        {selectedGenre
+                            ? genres.find((g) => g.value === selectedGenre)?.label
+                            : "All Genres"}
+                        <div className={`options ${isOpen ? "open" : ""}`}>
+                            {genres.map((genre) => (
+                                <div
+                                    key={genre.value}
+                                    className="option"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleSelect(genre.value);
+                                    }}
+                                >
+                                    {genre.label}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="sorting">
-                <div className="custom-select" onClick={() => setIsSortOpen(prev => !prev)}>
-                    {sortOrder
-                        ? sortOptions.find((option) => option.value === sortOrder)?.label
-                        : "Sorting"}
 
-                    <div className={`options ${isSortOpen ? "open" : ""}`}>
-                        {sortOptions.map((option) => (
-                            <div
-                                key={option.value}
-                                className="option"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleSortSelect(option.value);
-                                }}
-                            >
-                                {option.label}
-                            </div>
-                        ))}
+                <div className="sorting">
+                    <div className="custom-select" onClick={() => setIsSortOpen(prev => !prev)}>
+                        {sortOrder
+                            ? sortOptions.find((option) => option.value === sortOrder)?.label
+                            : "Sorting"}
+
+                        <div className={`options ${isSortOpen ? "open" : ""}`}>
+                            {sortOptions.map((option) => (
+                                <div
+                                    key={option.value}
+                                    className="option"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleSortSelect(option.value);
+                                    }}
+                                >
+                                    {option.label}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+
             </div>
         </nav>
     );
