@@ -1,18 +1,18 @@
 import "./App.css";
 import "./components.css";
+
 import data from "./data.json";
+
 import { useState } from "react";
+
 import { Header } from "./components/Header.jsx";
 import { Book } from "./components/Book.jsx";
 import { Searchbar } from "./components/Searchbar.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Selected } from "./components/Selected.jsx";
-import { RandomBook } from "./components/RandomBook.jsx";
-
-
-
 
 function App() {
+  //Variables for searching, sorting and filtering
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,24 +49,19 @@ function App() {
     return 0;
   });
 
-  const handleRandomBook = () => {
-    if (booksToShow.length === 0) return;
-
-    const randomIndex = Math.floor(Math.random() * booksToShow.length);
-    const randomBook = booksToShow[randomIndex];
-
-    setSelectedBook(randomBook);
-    setSearchTerm("");
-  };
 
   const handleClearFilter = () => setSelectedGenre(null);
 
+
+  //On clicking a genre, searches and selected book is reset
   const handleGenreClick = genre => {
     setSelectedGenre(genre.toLowerCase());
     setSelectedBook(null); // back to list
     setSearchTerm(""); // reset search so genre filter works
   };
 
+
+  //search, filter and sorting reset
   const handleReset = () => {
     setSelectedBook(null);
     setSelectedGenre(null);
@@ -78,7 +73,7 @@ function App() {
       <div className="filterable-book-table">
         <Header onHomeClick={handleReset} />
 
-        {/* Searchbar always visible */}
+        {/* Searchbar component always visible, input can change */}
         <Searchbar
           selectedGenre={selectedGenre}
           onGenreChange={genre => {
@@ -86,21 +81,18 @@ function App() {
             setSelectedBook(null);
             setSearchTerm("");
           }}
+
           searchTerm={searchTerm}
           onSearchChange={value => {
             setSearchTerm(value);
             setSelectedBook(null);
           }}
+
           sortOrder={sortOrder}
           onSortChange={value => {
             setSortOrder(value);
             setSelectedBook(null);
           }}
-        />
-
-        <RandomBook
-          onRandomPick={handleRandomBook}
-          disabled={booksToShow.length === 0}
         />
 
 
